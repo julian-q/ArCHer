@@ -77,7 +77,7 @@ def offpolicy_train_loop(env,\
     #main training loop
     print(">>>start iterations")
     for i in tqdm(range(iterations)):
-        # print(">>>Interacting with Environment")
+        print(">>>Interacting with Environment")
         if accelerator.is_main_process:
             trajectories = batch_interact_environment(agent = agent,\
                                             tokenizer= tokenizer,\
@@ -114,7 +114,6 @@ def offpolicy_train_loop(env,\
             torch.save(replay_buffer, os.path.join(save_path, 'replay_buffer.pt'))
             torch.save(all_trajectories, os.path.join(save_path, 'trajectories.pt'))
             print(">>> Saved Replay Buffer")
-            time.sleep(15)
         else:
             info = {}
         accelerator.wait_for_everyone()

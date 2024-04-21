@@ -58,6 +58,8 @@ def batch_interact_environment(agent, tokenizer, env, num_trajectories,\
         while not all(batch_done):
             steps += 1
             # print(f"Environment stpes {str(steps)}")
+            # print(">>> Getting action from these observations:")
+            # print(batch_obs)
             action = agent.get_action(batch_obs)
             batch_return = env.step(decode_f(action))
             for i,result in zip(range(bsize), batch_return):
@@ -71,8 +73,10 @@ def batch_interact_environment(agent, tokenizer, env, num_trajectories,\
                                 "action": action[i]})
                 batch_obs[i] = next_obs
                 batch_done[i] = done
+                # breakpoint()
             # obs = next_obs
-        print(trajectories[0][-1]["next_observation"])
+        
+        # print(trajectories[0][-1]["next_observation"])
         all_trajectories += [post_f(add_mc_return(add_trajectory_reward(trajectory)))\
                               for trajectory in trajectories]
         # breakpoint()

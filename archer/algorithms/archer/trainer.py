@@ -159,7 +159,9 @@ class ArcherTrainer():
         # self.agent.critic, self.agent.target_critic = self.accelerator.prepare(self.agent.critic, self.agent.target_critic)
         with torch.autograd.set_detect_anomaly(True):
             # self.agent, self.critic_optimizer = self.accelerator.prepare(self.agent, self.critic_optimizer)
-            for _ in range(self.epochs):
+            print(">>> going over epochs of data...")
+            for epoch in range(self.epochs):
+                print(">>> epoch", epoch)
                 data = [replay_buffer.sample(1) for _ in range(self.grad_accum_steps*replay_buffer.batch_size)]
                 for d in data:
                     for k,v in d.items():

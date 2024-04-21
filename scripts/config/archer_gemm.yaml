@@ -1,0 +1,32 @@
+defaults:
+  - default
+  - _self_
+
+# checkpoint
+checkpoint_path: ""
+save_path: '/matx/u/quevedo/gemm/'
+# policy_lm : 'mistralai/Mistral-7B-Instruct-v0.2'
+# policy_lm: 'codellama/CodeLlama-7b-Instruct-hf'
+policy_lm: 'codellama/CodeLlama-13b-Instruct-hf'
+use_lora: True
+
+code_base_dir: '/sailhome/quevedo/SGEMM_CUDA'
+
+# env
+env_name: gemm
+
+# training hyperparameters
+rollout_size: 1 #number of rollout trajectories for each update
+batch_size: 1
+iterations: 2000 #total number of iterations
+epochs: 1 #number of epochs for the critic each iteration
+actor_epochs: 1 #number of epochs for the actor each iteration
+warmup_iter: 1 #number of iterations without updating the policy
+grad_accum_steps: 1
+critic_lr: 2e-5
+lm_lr: 1e-6
+
+# wandb logging
+use_wandb: True
+project_name: 'llm_rl_gemm'
+run_name: 'archer-acc'

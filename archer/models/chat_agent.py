@@ -8,7 +8,7 @@ import numpy as np
 from archer.models.critic import DoubleCritic
 
 
-class ArcherAgent(torch.nn.Module):
+class ChatAgent(torch.nn.Module):
     def __init__(
         self,
         device,
@@ -22,22 +22,18 @@ class ArcherAgent(torch.nn.Module):
         do_sample=True,
         temperature=1.0,
         max_new_tokens=32,
-        use_bfloat16=True,
+        use_bfloat16=False,
         eos_str="\n",
     ):
-        super(ArcherAgent, self).__init__()
+        super(ChatAgent, self).__init__()
         if use_bfloat16:
-            print("loading with bf16")
             self.model = AutoModelForCausalLM.from_pretrained(
                 policy_lm, cache_dir=cache_dir, torch_dtype=torch.bfloat16
             ).to(device)
-            print("done")
         else:
-            print("loading with fp32")
             self.model = AutoModelForCausalLM.from_pretrained(
                 policy_lm, cache_dir=cache_dir
             ).to(device)
-            print("done")
         if use_lora:
             from peft import LoraConfig, TaskType, get_peft_model
 
@@ -94,37 +90,40 @@ class ArcherAgent(torch.nn.Module):
         )
 
     def get_action(self, observation):
-        if self.template is not None:
-            observation = [self.template.replace("{obs}", obs) for obs in observation]
-        obs_ids = self.tokenizer(observation, return_tensors="pt", padding=True).to(
-            self.device
+        # CHANGE to use tokenizer's `apply_chat_template` function, handling the case that observation can be a list of strings due to batching
+        # obs_ids = self.tokenizer(observation, return_tensors='pt', padding=True, max_length=512, truncation = True).to(self.device)
+        observation_str = self.tokenizer.apply_chat_template(
+            observation, tokenize=False
         )
+        obs_ids = self.tokenizer(observation_str, return_tensors="pt").to(self.device)
         # obs_embeds = self.accelerator.unwrap_model(self.model).get_input_embeddings()(obs_ids["input_ids"])
         # print(inputs_embeds.shape)
         # outputs = self.model.generate(inputs_embeds=obs_embeds, attention_mask=obs_ids['attention_mask'],\
         #                                max_new_tokens=32, do_sample=self.do_sample, temperature = self.temperature,\
         #                                pad_token_id = self.tokenizer.eos_token_id).cpu()
-        context_len = obs_ids["attention_mask"].size(1)
+        # context_len = obs_ids['attention_mask'].size(1)
         outputs = (
             self.accelerator.unwrap_model(self.model)
             .generate(
-                **obs_ids,
-                max_new_tokens=self.tokenizer.model_max_length,
-                pad_token_id=self.tokenizer.eos_token_id,
+                input_ids=obs_ids,
+                max_new_tokens=self.max_new_tokens,
+                do_sample=self.do_sample,
                 temperature=self.temperature,
+                pad_token_id=self.tokenizer.eos_token_id,
             )
             .cpu()
         )
-        outputs = outputs[:, context_len:]
+        # outputs = outputs[:, context_len:]
         raw_action = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
-        for _ in range(3):
-            raw_action = [a[1:] if a.startswith("\n") else a for a in raw_action]
-        if self.eos_str is not None:
-            # print(f"using eos str {eos_str}")
-            # print([raw_a.split(self.eos_str)[0] + self.eos_str for raw_a in raw_action])
-            return [raw_a.split(self.eos_str)[0] for raw_a in raw_action]
-        else:
-            return raw_action
+        # for _ in range(3):
+        #     raw_action = [a[1:] if a.startswith('\n') else a for a in raw_action]
+        # return raw_action
+        # if self.eos_str is not None:
+        #     # print(f"using eos str {eos_str}")
+        #     # print([raw_a.split(self.eos_str)[0] + self.eos_str for raw_a in raw_action])
+        #     return [raw_a.split(self.eos_str)[0] for raw_a in raw_action]
+        # else:
+        return raw_action
 
     def get_q(self, observation, action, detach_model=False):
         return self.critic.get_q(observation, action, detach_model=detach_model)
@@ -136,35 +135,33 @@ class ArcherAgent(torch.nn.Module):
         return self.target_critic.get_q(observation, action, detach_model=detach_model)
 
     def get_log_prob(self, observation, action):
-        if self.template is not None:
-            observation = [self.template.replace("{obs}", obs) for obs in observation]
-        obs_ids = self.tokenizer(
-            observation,
-            return_tensors="pt",
-            padding=True,
-            max_length=512,
-            truncation=True,
-        ).to(self.device)
-        action_ids = self.tokenizer(
-            action, return_tensors="pt", padding=True, max_length=512, truncation=True
-        ).to(self.device)
+        # if self.template is not None:
+        #     observation = [self.template.replace("{obs}", obs) for obs in observation]
+        # CHANGE to just use the tokenizer's `apply_chat_template` function, appending the action as an "assistant" message
+        # obs_ids = self.tokenizer(observation, return_tensors='pt', padding=True, max_length=512, truncation = True).to(self.device)
+        # messages = observation.append({"role": "assistant", "content": action})
+        observation_str = self.tokenizer.apply_chat_template(
+            observation, tokenize=False
+        )
+        action_str = self.tokenizer.apply_chat_template([action], tokenize=False)
+        obs_ids = self.tokenizer(observation_str, return_tensors="pt").to(self.device)
+        action_ids = self.tokenizer(action_str, return_tensors="pt").to(self.device)
+        input_ids = torch.cat([obs_ids, action_ids], dim=1)
+        # action_ids = self.tokenizer(action, return_tensors='pt', padding=True, max_length=512, truncation = True).to(self.device)
         # action_embeds = self.model.get_input_embeddings()(action_ids["input_ids"]).detach()
         # obs_embeds = self.model.get_input_embeddings()(obs_ids["input_ids"]).detach()
-        input_ids = torch.cat([obs_ids["input_ids"], action_ids["input_ids"]], dim=1)
+        # input_ids = torch.cat([obs_ids["input_ids"], action_ids["input_ids"]], dim = 1)
         # input_embeds = torch.cat([obs_embeds, action_embeds], dim = 1)
-        attention_mask = torch.cat(
-            [obs_ids["attention_mask"], action_ids["attention_mask"]], dim=1
-        )
-        outputs = self.model(input_ids=input_ids, attention_mask=attention_mask)
+        # attention_mask = torch.cat([obs_ids["attention_mask"], action_ids["attention_mask"]],\
+        #                         dim = 1)
+        outputs = self.model(input_ids=input_ids)
         values = None
         if isinstance(outputs, Tuple):
             values, outputs = outputs
         prediction_probs = self.softmax(outputs.logits)
         selected_prediction_probs = torch.take_along_dim(
-            prediction_probs[:, obs_ids["attention_mask"].size(1) - 1 : -1],
-            action_ids["input_ids"].unsqueeze(2),
-            dim=2,
-        ).squeeze(2)
+            prediction_probs[obs_ids.size(1) :], action_ids, dim=0
+        )
         if values is not None:
             return (
                 values[:, obs_ids["attention_mask"].size(1) - 1 : -1],
@@ -172,10 +169,7 @@ class ArcherAgent(torch.nn.Module):
                 action_ids["attention_mask"],
             )
         else:
-            return torch.sum(
-                torch.log(selected_prediction_probs) * action_ids["attention_mask"],
-                dim=1,
-            )
+            return torch.sum(torch.log(selected_prediction_probs))
 
     def soft_update_target_critic(self, tau):
         # for target_critic, critic in zip(self.target_critics, self.critics):

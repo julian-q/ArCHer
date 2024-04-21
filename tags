@@ -1,0 +1,188 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTION_TO_TEMPLATE	archer/environment/webshop.py	/^ACTION_TO_TEMPLATE = {$/;"	v
+AdventureEnv	archer/environment/adventure_env.py	/^class AdventureEnv():$/;"	c
+ArcherAgent	archer/models/archer_agent.py	/^class ArcherAgent(torch.nn.Module):$/;"	c
+ArcherTrainer	archer/algorithms/archer/trainer.py	/^class ArcherTrainer():$/;"	c
+BCTrainer	archer/algorithms/online_filteredbc/trainer.py	/^class BCTrainer():$/;"	c
+BatchedAdventureEnv	archer/environment/adventure_env.py	/^class BatchedAdventureEnv():$/;"	c
+BatchedGemmEnv	archer/environment/gemm.py	/^class BatchedGemmEnv:$/;"	c
+BatchedGuessMyCityEnv	archer/environment/guess_my_city.py	/^class BatchedGuessMyCityEnv():$/;"	c
+BatchedTwentyQuestionsEnv	archer/environment/twenty_questions.py	/^class BatchedTwentyQuestionsEnv():$/;"	c
+BatchedWebShopEnv	archer/environment/webshop.py	/^class BatchedWebShopEnv():$/;"	c
+CHAIAgent	archer/models/chai_agent.py	/^class CHAIAgent(torch.nn.Module):$/;"	c
+CITY_LIST	archer/environment/guess_my_city.py	/^CITY_LIST = ['Seoul, South Korea',$/;"	v
+CONFIG_NAME	scripts/run.py	/^CONFIG_NAME = "archer_20q"$/;"	v
+CONFIG_NAME	scripts/run_bc.py	/^CONFIG_NAME = "reinforce"$/;"	v
+ChatAgent	archer/models/chat_agent.py	/^class ChatAgent(torch.nn.Module):$/;"	c
+DEFAULT_OBJECT_DICT	archer/environment/llm_twenty_questions_subset.py	/^DEFAULT_OBJECT_DICT = {$/;"	v
+DEFAULT_OBJECT_DICT	archer/environment/twenty_questions.py	/^DEFAULT_OBJECT_DICT = {$/;"	v
+DEFAULT_OBJECT_LIST	archer/environment/llm_twenty_questions_subset.py	/^DEFAULT_OBJECT_LIST = [DEFAULT_OBJECT_LIST[i] for i in [1,11,21,31,41,51,61,71,81,91]]$/;"	v
+DEFAULT_OBJECT_LIST	archer/environment/llm_twenty_questions_subset.py	/^DEFAULT_OBJECT_LIST = sum([d for d in DEFAULT_OBJECT_DICT.values()], [])$/;"	v
+DEFAULT_OBJECT_LIST	archer/environment/twenty_questions.py	/^DEFAULT_OBJECT_LIST = sum([d for d in DEFAULT_OBJECT_DICT.values()], [])$/;"	v
+DoubleCritic	archer/models/critic.py	/^class DoubleCritic(torch.nn.Module):$/;"	c
+DummyDataset	archer/data/utils.py	/^class DummyDataset(Dataset):$/;"	c
+GemmEnv	archer/environment/gemm.py	/^class GemmEnv:$/;"	c
+GuessMyCityEnv	archer/environment/guess_my_city.py	/^class GuessMyCityEnv():$/;"	c
+INITIAL_STR	archer/environment/guess_my_city.py	/^INITIAL_STR = "Questions:\\n"$/;"	v
+INITIAL_STR	archer/environment/llm_twenty_questions_subset.py	/^INITIAL_STR = "Questions:\\n"$/;"	v
+INITIAL_STR	archer/environment/twenty_questions.py	/^INITIAL_STR = "Questions:\\n"$/;"	v
+LLMBatchedTwentyQuestionsEnv	archer/environment/llm_twenty_questions_subset.py	/^class LLMBatchedTwentyQuestionsEnv():$/;"	c
+LLMTwentyQuestionsEnv	archer/environment/llm_twenty_questions_subset.py	/^class LLMTwentyQuestionsEnv():$/;"	c
+PROMPT_TEMPLATE	archer/environment/llm_twenty_questions_subset.py	/^PROMPT_TEMPLATE = 'You are playing a game called twenty questions with me. The rule of twenty question is that you are given a hidden word, and I am guessing what the word is within twenty questions. For every question, if it is an invalid question, you should answer "Invalid Question.". For any valid question, you should answer either "Yes." or "No.". Now the hidden word given to you is "{word}", and the question for the current round is "{question}". Your response is:'$/;"	v
+PROMPT_TEMPLATE	archer/environment/twenty_questions.py	/^PROMPT_TEMPLATE = 'You are playing a game called twenty questions with me. The rule of twenty question is that you are given a hidden word, and I am guessing what the word is within twenty questions. For every question, if it is an invalid question, you should answer "Invalid Question.". For any valid question, you should answer either "Yes." or "No.". Now the hidden word given to you is "{word}", and the question for the current round is "{question}". Your response is:'$/;"	v
+ReplayBuffer	archer/data/utils.py	/^class ReplayBuffer:$/;"	c
+TEMPLATE	archer/environment/llm_twenty_questions_subset.py	/^TEMPLATE =  llm_template.format(user_message = prompt)$/;"	v
+TwentyQuestionsEnv	archer/environment/twenty_questions.py	/^class TwentyQuestionsEnv():$/;"	c
+WebShopEnv	archer/environment/webshop.py	/^class WebShopEnv:$/;"	c
+WebShopFullObsEnv	archer/environment/webshop.py	/^class WebShopFullObsEnv:$/;"	c
+__getitem__	archer/data/utils.py	/^    def __getitem__(self, idx):$/;"	m	class:DummyDataset	file:
+__init__	archer/algorithms/archer/trainer.py	/^                    gamma: float = 0.9,$/;"	m	class:ArcherTrainer
+__init__	archer/algorithms/online_filteredbc/trainer.py	/^                    epochs: int = 3,$/;"	m	class:BCTrainer
+__init__	archer/data/utils.py	/^    def __init__(self, batch_size=2, capacity=10000):$/;"	m	class:ReplayBuffer
+__init__	archer/data/utils.py	/^    def __init__(self, buffer):$/;"	m	class:DummyDataset
+__init__	archer/environment/adventure_env.py	/^    def __init__(self, env_load_path, bsize = 32, max_steps = 60):$/;"	m	class:BatchedAdventureEnv
+__init__	archer/environment/adventure_env.py	/^    def __init__(self, env_load_path, max_steps = 60,):$/;"	m	class:AdventureEnv
+__init__	archer/environment/gemm.py	/^    def __init__(self, tokenizer, max_steps=4, bsize=32):$/;"	m	class:BatchedGemmEnv
+__init__	archer/environment/gemm.py	/^    def __init__(self, tokenizer_name, max_steps=4):$/;"	m	class:GemmEnv
+__init__	archer/environment/guess_my_city.py	/^    def __init__($/;"	m	class:BatchedGuessMyCityEnv
+__init__	archer/environment/guess_my_city.py	/^    def __init__($/;"	m	class:GuessMyCityEnv
+__init__	archer/environment/llm_twenty_questions_subset.py	/^    def __init__($/;"	m	class:LLMBatchedTwentyQuestionsEnv
+__init__	archer/environment/llm_twenty_questions_subset.py	/^    def __init__($/;"	m	class:LLMTwentyQuestionsEnv
+__init__	archer/environment/twenty_questions.py	/^    def __init__($/;"	m	class:BatchedTwentyQuestionsEnv
+__init__	archer/environment/twenty_questions.py	/^    def __init__($/;"	m	class:TwentyQuestionsEnv
+__init__	archer/environment/webshop.py	/^    def __init__($/;"	m	class:BatchedWebShopEnv
+__init__	archer/environment/webshop.py	/^  def __init__(self, session_id=None, url=None):$/;"	m	class:WebShopEnv
+__init__	archer/environment/webshop.py	/^  def __init__(self, session_id=None, url=None):$/;"	m	class:WebShopFullObsEnv
+__init__	archer/models/archer_agent.py	/^    def __init__($/;"	m	class:ArcherAgent
+__init__	archer/models/chai_agent.py	/^    def __init__(self, device, accelerator, policy_lm = "gpt2", critic_lm="roberta-base",$/;"	m	class:CHAIAgent
+__init__	archer/models/chat_agent.py	/^    def __init__($/;"	m	class:ChatAgent
+__init__	archer/models/critic.py	/^    def __init__(self, device, accelerator, critic_lm, cache_dir, in_dim, out_dim):$/;"	m	class:DoubleCritic
+__len__	archer/data/utils.py	/^    def __len__(self):$/;"	m	class:DummyDataset	file:
+__len__	archer/data/utils.py	/^    def __len__(self):$/;"	m	class:ReplayBuffer	file:
+_get_action	archer/models/chai_agent.py	/^    def _get_action(self, observation):$/;"	m	class:CHAIAgent
+_get_obs	archer/environment/webshop.py	/^  def _get_obs(self):$/;"	m	class:WebShopFullObsEnv
+_step	archer/environment/gemm.py	/^    def _step(self, action):$/;"	m	class:GemmEnv
+_step	archer/environment/guess_my_city.py	/^    def _step(self, question, answer):$/;"	m	class:GuessMyCityEnv
+_step	archer/environment/llm_twenty_questions_subset.py	/^    def _step(self, question, answer):$/;"	m	class:LLMTwentyQuestionsEnv
+_step	archer/environment/twenty_questions.py	/^    def _step(self, question, answer):$/;"	m	class:TwentyQuestionsEnv
+actor_loss	archer/algorithms/archer/trainer.py	/^    def actor_loss(self, observation, pi_action, advantage, **kwargs):$/;"	m	class:ArcherTrainer
+actor_loss	archer/algorithms/online_filteredbc/trainer.py	/^    def actor_loss(self, observation, action, **kwargs):$/;"	m	class:BCTrainer
+add_mc_return	archer/environment/env_utils.py	/^def add_mc_return(trajectory, gamma = 0.95):$/;"	f
+add_trajectory_reward	archer/environment/env_utils.py	/^def add_trajectory_reward(trajectory):$/;"	f
+author	setup.py	/^    author=("Yifei Zhou"),$/;"	v
+batch_interact_environment	archer/environment/env_utils.py	/^        post_f = lambda x: x, use_tqdm = True, decode_f = lambda x: x,$/;"	f
+build_dir	archer/environment/gemm.py	/^build_dir = "\/sailhome\/quevedo\/SGEMM_CUDA\/build"$/;"	v
+cache_dir	test_mistral.py	/^cache_dir = "\/matx\/u\/quevedo\/.cache\/huggingface\/hub"$/;"	v
+classifiers	setup.py	/^    classifiers=[$/;"	v
+clean_str	archer/environment/webshop.py	/^def clean_str(p):$/;"	f
+colorful_print	archer/utils.py	/^def colorful_print(string: str, *args, **kwargs) -> None:$/;"	f
+colorful_warning	archer/utils.py	/^def colorful_warning(string: str, *args, **kwargs) -> None:$/;"	f
+compile_benchmark	archer/environment/gemm.py	/^def compile_benchmark():$/;"	f
+copy	archer/environment/llm_twenty_questions_subset.py	/^    def copy(self):$/;"	m	class:LLMTwentyQuestionsEnv
+copy	archer/environment/twenty_questions.py	/^    def copy(self):$/;"	m	class:TwentyQuestionsEnv
+critic_loss	archer/algorithms/archer/trainer.py	/^    def critic_loss(self, observation, action, reward, next_observation, done, mc_return,**kwargs):$/;"	m	class:ArcherTrainer
+decoded	test_mistral.py	/^decoded = tokenizer.batch_decode(generated_ids)$/;"	v
+demo	archer/environment/gradio_oracle.py	/^demo = gr.Interface(fn=predict, inputs="textbox", outputs="textbox")$/;"	v
+description	setup.py	/^    description="Research code for ArCHer (Actor Critic Framework with Hierarchical Structures)",$/;"	v
+device	test_mistral.py	/^device = "cuda" # the device to load the model onto$/;"	v
+dict_mean	archer/algorithms/archer/trainer.py	/^def dict_mean(dict_list):$/;"	f
+dict_mean	archer/algorithms/online_filteredbc/trainer.py	/^def dict_mean(dict_list):$/;"	f
+encodeds	test_mistral.py	/^encodeds = tokenizer.apply_chat_template(messages, return_tensors="pt")$/;"	v
+forward	archer/models/critic.py	/^    def forward(self, observation, action, detach_model=False):$/;"	m	class:DoubleCritic
+generate_answers	archer/environment/guess_my_city.py	/^    def generate_answers(self, questions):$/;"	m	class:BatchedGuessMyCityEnv
+generate_answers	archer/environment/llm_twenty_questions_subset.py	/^    def generate_answers(self, questions):$/;"	m	class:LLMBatchedTwentyQuestionsEnv
+generate_answers	archer/environment/twenty_questions.py	/^    def generate_answers(self, questions):$/;"	m	class:BatchedTwentyQuestionsEnv
+generated_ids	test_mistral.py	/^generated_ids = model.generate(model_inputs, max_new_tokens=1000, do_sample=True)$/;"	v
+get_action	archer/models/archer_agent.py	/^    def get_action(self, observation):$/;"	m	class:ArcherAgent
+get_action	archer/models/chai_agent.py	/^    def get_action(self, observation):$/;"	m	class:CHAIAgent
+get_action	archer/models/chat_agent.py	/^    def get_action(self, observation):$/;"	m	class:ChatAgent
+get_instruction	archer/environment/webshop.py	/^def get_instruction(init_obs: str):$/;"	f
+get_inventory	archer/environment/adventure_env.py	/^    def get_inventory(self):$/;"	m	class:AdventureEnv
+get_log_prob	archer/models/archer_agent.py	/^    def get_log_prob(self, observation, action):$/;"	m	class:ArcherAgent
+get_log_prob	archer/models/chai_agent.py	/^    def get_log_prob(self, observation, action):$/;"	m	class:CHAIAgent
+get_log_prob	archer/models/chat_agent.py	/^    def get_log_prob(self, observation, action):$/;"	m	class:ChatAgent
+get_named_code_blocks	archer/environment/gemm.py	/^def get_named_code_blocks(resp):$/;"	f
+get_observation	archer/environment/adventure_env.py	/^    def get_observation(self, obs):$/;"	m	class:AdventureEnv
+get_q	archer/models/archer_agent.py	/^    def get_q(self, observation, action, detach_model=False):$/;"	m	class:ArcherAgent
+get_q	archer/models/chat_agent.py	/^    def get_q(self, observation, action, detach_model=False):$/;"	m	class:ChatAgent
+get_surroudings	archer/environment/adventure_env.py	/^    def get_surroudings(self):$/;"	m	class:AdventureEnv
+get_target_q	archer/models/archer_agent.py	/^    def get_target_q(self, observation, action, detach_model=False):$/;"	m	class:ArcherAgent
+get_target_q	archer/models/chat_agent.py	/^    def get_target_q(self, observation, action, detach_model=False):$/;"	m	class:ChatAgent
+get_v	archer/models/archer_agent.py	/^    def get_v(self, inputs, detach_model=False):$/;"	m	class:ArcherAgent
+get_v	archer/models/chat_agent.py	/^    def get_v(self, inputs, detach_model=False):$/;"	m	class:ChatAgent
+include_package_data	setup.py	/^    include_package_data=True,$/;"	v
+insert	archer/data/utils.py	/^    def insert($/;"	m	class:ReplayBuffer
+install_requires	setup.py	/^    install_requires=open("requirements.txt", "r").read().split(),$/;"	v
+is_correct	archer/environment/guess_my_city.py	/^    def is_correct(self, question):$/;"	m	class:GuessMyCityEnv
+is_correct	archer/environment/llm_twenty_questions_subset.py	/^    def is_correct(self, question):$/;"	m	class:LLMTwentyQuestionsEnv
+is_correct	archer/environment/twenty_questions.py	/^    def is_correct(self, question):$/;"	m	class:TwentyQuestionsEnv
+keywords	setup.py	/^    keywords='ArCHer',$/;"	v
+license	setup.py	/^    license='MIT',$/;"	v
+load	archer/algorithms/archer/trainer.py	/^    def load(self, path):$/;"	m	class:ArcherTrainer
+load	archer/algorithms/online_filteredbc/trainer.py	/^    def load(self, path):$/;"	m	class:BCTrainer
+long_description	setup.py	/^    long_description=open("README.md", "r", encoding='utf-8').read(),$/;"	v
+long_description_content_type	setup.py	/^    long_description_content_type="text\/markdown",$/;"	v
+main	scripts/run.py	/^def main(config: "DictConfig"):$/;"	f
+main	scripts/run_bc.py	/^def main(config: "DictConfig"):$/;"	f
+messages	test_mistral.py	/^messages = [$/;"	v
+mistral_twenty_questions_decode_actions	archer/prompts/mistral.py	/^def mistral_twenty_questions_decode_actions(output):$/;"	f
+model	archer/environment/gradio_oracle.py	/^model = AutoModelForCausalLM.from_pretrained(model_lm, torch_dtype = torch.bfloat16).to("cuda:0")$/;"	v
+model	test_mistral.py	/^model = AutoModelForCausalLM.from_pretrained("mistralai\/Mistral-7B-Instruct-v0.2", cache_dir=cache_dir).cuda()$/;"	v
+model_inputs	test_mistral.py	/^model_inputs = encodeds.to(device)$/;"	v
+model_lm	archer/environment/gradio_oracle.py	/^model_lm = "mistralai\/Mistral-7B-Instruct-v0.2"$/;"	v
+name	setup.py	/^    name="archer",$/;"	v
+offpolicy_train_loop	archer/algorithms/offpolicy_train_loop.py	/^                warmup_iter: int = 20,$/;"	f
+packages	setup.py	/^    packages=setuptools.find_packages(),$/;"	v
+plain_bc_loss	archer/algorithms/bc/core.py	/^def plain_bc_loss(model, tokenizer, observation, action, **kwargs):$/;"	f
+predict	archer/environment/gradio_oracle.py	/^def predict(text):$/;"	f
+prepare	archer/models/archer_agent.py	/^    def prepare(self):$/;"	m	class:ArcherAgent
+prepare	archer/models/chai_agent.py	/^    def prepare(self):$/;"	m	class:CHAIAgent
+prepare	archer/models/chat_agent.py	/^    def prepare(self):$/;"	m	class:ChatAgent
+random_action	archer/environment/adventure_env.py	/^    def random_action(self):$/;"	m	class:AdventureEnv
+reset	archer/environment/adventure_env.py	/^    def reset(self, idx =None):$/;"	m	class:BatchedAdventureEnv
+reset	archer/environment/adventure_env.py	/^    def reset(self, reset_state = None, reset_obs = None):$/;"	m	class:AdventureEnv
+reset	archer/environment/gemm.py	/^    def reset(self):$/;"	m	class:GemmEnv
+reset	archer/environment/gemm.py	/^    def reset(self, idx):$/;"	m	class:BatchedGemmEnv
+reset	archer/environment/guess_my_city.py	/^    def reset(self, idx : Optional[int]=None):$/;"	m	class:GuessMyCityEnv
+reset	archer/environment/guess_my_city.py	/^    def reset(self, idx: Optional[int] = None):$/;"	m	class:BatchedGuessMyCityEnv
+reset	archer/environment/llm_twenty_questions_subset.py	/^    def reset(self, idx : Optional[int]=None):$/;"	m	class:LLMTwentyQuestionsEnv
+reset	archer/environment/llm_twenty_questions_subset.py	/^    def reset(self, idx: Optional[int] = None):$/;"	m	class:LLMBatchedTwentyQuestionsEnv
+reset	archer/environment/twenty_questions.py	/^    def reset(self, idx : Optional[int]=None):$/;"	m	class:TwentyQuestionsEnv
+reset	archer/environment/twenty_questions.py	/^    def reset(self, idx: Optional[int] = None):$/;"	m	class:BatchedTwentyQuestionsEnv
+reset	archer/environment/webshop.py	/^    def reset(self, idx: Optional[List[int]] = None):$/;"	m	class:BatchedWebShopEnv
+reset	archer/environment/webshop.py	/^  def reset(self, session):$/;"	m	class:WebShopEnv
+reset	archer/environment/webshop.py	/^  def reset(self, session):$/;"	m	class:WebShopFullObsEnv
+reset_code	archer/environment/gemm.py	/^def reset_code(src_dir):$/;"	f
+run_benchmark	archer/environment/gemm.py	/^def run_benchmark():$/;"	f
+sample	archer/data/utils.py	/^    def sample(self, batch_size=None):$/;"	m	class:ReplayBuffer
+save	archer/algorithms/archer/trainer.py	/^    def save(self, path):$/;"	m	class:ArcherTrainer
+save	archer/algorithms/online_filteredbc/trainer.py	/^    def save(self, path):$/;"	m	class:BCTrainer
+soft_update_target_critic	archer/models/archer_agent.py	/^    def soft_update_target_critic(self, tau):$/;"	m	class:ArcherAgent
+soft_update_target_critic	archer/models/chai_agent.py	/^    def soft_update_target_critic(self, tau):$/;"	m	class:CHAIAgent
+soft_update_target_critic	archer/models/chat_agent.py	/^    def soft_update_target_critic(self, tau):$/;"	m	class:ChatAgent
+softmax	archer/algorithms/bc/core.py	/^softmax = torch.nn.Softmax(dim=-1)$/;"	v
+src_dir	archer/environment/gemm.py	/^src_dir = "\/sailhome\/quevedo\/SGEMM_CUDA\/src"$/;"	v
+step	archer/environment/adventure_env.py	/^    def step(self, action):$/;"	m	class:AdventureEnv
+step	archer/environment/adventure_env.py	/^    def step(self, action_list):$/;"	m	class:BatchedAdventureEnv
+step	archer/environment/gemm.py	/^    def step(self, actions):$/;"	m	class:BatchedGemmEnv
+step	archer/environment/guess_my_city.py	/^    def step(self, questions):$/;"	m	class:BatchedGuessMyCityEnv
+step	archer/environment/llm_twenty_questions_subset.py	/^    def step(self, questions):$/;"	m	class:LLMBatchedTwentyQuestionsEnv
+step	archer/environment/twenty_questions.py	/^    def step(self, questions):$/;"	m	class:BatchedTwentyQuestionsEnv
+step	archer/environment/webshop.py	/^    def step(self, actions: List[str]):$/;"	m	class:BatchedWebShopEnv
+step	archer/environment/webshop.py	/^  def step(self, action):$/;"	m	class:WebShopEnv
+step	archer/environment/webshop.py	/^  def step(self, action):$/;"	m	class:WebShopFullObsEnv
+tag_visible	archer/environment/webshop.py	/^def tag_visible(element):$/;"	f
+tokenizer	archer/environment/gradio_oracle.py	/^tokenizer = AutoTokenizer.from_pretrained(model_lm)$/;"	v
+tokenizer	test_mistral.py	/^tokenizer = AutoTokenizer.from_pretrained("mistralai\/Mistral-7B-Instruct-v0.2", cache_dir=cache_dir)$/;"	v
+train_loop	archer/algorithms/bc/train_loop.py	/^                **kwargs):$/;"	f
+update	archer/algorithms/archer/trainer.py	/^    def update(self, replay_buffer, no_update_actor=False):$/;"	m	class:ArcherTrainer
+update	archer/algorithms/online_filteredbc/trainer.py	/^    def update(self, replay_buffer, no_update_actor=False):$/;"	m	class:BCTrainer
+update_code	archer/environment/gemm.py	/^def update_code(blocks):$/;"	f
+url	setup.py	/^    url="https:\/\/github.com\/YifeiZhou02\/ArCHer",$/;"	v
+version	setup.py	/^    version='0.1.0',$/;"	v
+webshop_text	archer/environment/webshop.py	/^def webshop_text(session, page_type, query_string='', page_num=1, asin='', options={}, subpage='', webshop_url=None, **kwargs):$/;"	f

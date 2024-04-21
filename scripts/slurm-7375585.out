@@ -1,0 +1,92 @@
+Thu Mar 21 01:58:13 2024       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.129.03             Driver Version: 535.129.03   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA L40S                    On  | 00000001:1B:00.0 Off |                    0 |
+| N/A   33C    P8              32W / 350W |      3MiB / 46068MiB |      0%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+[34m>>> Configuration file: archer_20q<<<[0m
+[31mcache_dir: /matx/u/quevedo/.cache/huggingface/hub
+huggingface_token: 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
+wandb_key: a08497d9a8fce92cd6911f93758d945e83def4d8
+policy_lm: codellama/CodeLlama-13b-Instruct-hf
+critic_lm: roberta-base
+agent_type: archer
+use_baseline: false
+use_lora: true
+max_new_tokens: 32
+save_freq: 25
+eval_freq: 25
+capacity: 100000
+rollout_size: 1
+eval_size: 32
+batch_size: 1
+iterations: 2000
+epochs: 16
+actor_epochs: 3
+warmup_iter: 20
+grad_accum_steps: 32
+do_sample: true
+temperature: 1.0
+critic_lr: 2.0e-05
+lm_lr: 1.0e-06
+env_idx: null
+gamma: 0.95
+tau: 0.1
+max_grad_norm: 1.0
+use_wandb: true
+checkpoint_path: ''
+save_path: /matx/u/quevedo/gemm/
+code_base_dir: /sailhome/quevedo/SGEMM_CUDA_0
+env_name: gemm
+project_name: llm_rl_gemm
+run_name: archer-acc
+[0m
+Token has not been saved to git credential helper. Pass `add_to_git_credential=True` if you want to set the git credential as well.
+Token is valid (permission: read).
+Your token has been saved to /matx/u/quevedo/.cache/huggingface/token
+Login successful
+[2024-03-21 01:58:35,416][accelerate.utils.other][WARNING] - Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+>>> Using GEMM environment
+>>> Using ArCHer agent
+loading with bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [01:26<02:52, 86.23s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [02:52<01:26, 86.43s/it]Loading checkpoint shards: 100%|██████████| 3/3 [03:46<00:00, 71.41s/it]Loading checkpoint shards: 100%|██████████| 3/3 [03:46<00:00, 75.45s/it]
+wandb: Currently logged in as: julian-q. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /sailhome/quevedo/.netrc
+wandb: Tracking run with wandb version 0.16.4
+wandb: Run data is saved locally in /sailhome/quevedo/ArCHer/scripts/wandb/run-20240321_020240-xnfohp0k
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run archer-acc
+wandb: ⭐️ View project at https://wandb.ai/julian-q/llm_rl_gemm
+wandb: 🚀 View run at https://wandb.ai/julian-q/llm_rl_gemm/runs/xnfohp0k
+done
+Using LoRA
+trainable params: 26,214,400 || all params: 13,042,242,560 || trainable%: 0.2009961084483925
+Creating new checkpoint directory
+>>>start iterations
+  0%|          | 0/2000 [00:00<?, ?it/s]/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:87: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "q1.std": torch.std(q1),\
+/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:91: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "q2.std": torch.std(q2),\
+/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:95: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "v1.std": torch.std(v1),
+/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:99: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "v2.std": torch.std(v2),
+/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:103: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "target_q1.std": torch.std(target_q1),
+/sailhome/quevedo/ArCHer/archer/algorithms/archer/trainer.py:107: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at /opt/conda/conda-bld/pytorch_1704987289929/work/aten/src/ATen/native/ReduceOps.cpp:1760.)
+  "target_q2.std": torch.std(target_q2),}
+slurmstepd: error: *** JOB 7375585 ON matx1 CANCELLED AT 2024-03-21T09:20:30 ***

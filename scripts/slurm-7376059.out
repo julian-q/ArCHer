@@ -1,0 +1,131 @@
+[34m>>> Configuration file: archer_20q<<<[0m
+[31mcache_dir: /matx/u/quevedo/.cache/huggingface/hub
+huggingface_token: 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
+wandb_key: a08497d9a8fce92cd6911f93758d945e83def4d8
+policy_lm: codellama/CodeLlama-13b-Instruct-hf
+critic_lm: roberta-base
+agent_type: archer
+use_baseline: false
+use_lora: true
+max_new_tokens: 32
+save_freq: 25
+eval_freq: 25
+capacity: 100000
+rollout_size: 8
+eval_size: 32
+batch_size: 8
+iterations: 2000
+epochs: 8
+actor_epochs: 3
+warmup_iter: 1
+grad_accum_steps: 1
+do_sample: true
+temperature: 1.0
+critic_lr: 2.0e-05
+lm_lr: 1.0e-06
+env_idx: null
+gamma: 0.95
+tau: 0.1
+max_grad_norm: 1.0
+use_wandb: true
+checkpoint_path: ''
+save_path: /matx/u/quevedo/gemm/
+code_base_dir: /sailhome/quevedo/SGEMM_CUDA_0
+env_name: gemm
+project_name: llm_rl_gemm
+run_name: archer-acc
+[0m
+Token has not been saved to git credential helper. Pass `add_to_git_credential=True` if you want to set the git credential as well.
+Token is valid (permission: read).
+Your token has been saved to /matx/u/quevedo/.cache/huggingface/token
+Login successful
+[2024-03-21 13:08:06,972][accelerate.utils.other][WARNING] - Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+>>> Using GEMM environment
+>>> Using ArCHer agent
+loading with bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [01:28<02:56, 88.05s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [02:56<01:28, 88.08s/it]Loading checkpoint shards: 100%|██████████| 3/3 [03:51<00:00, 72.94s/it]Loading checkpoint shards: 100%|██████████| 3/3 [03:51<00:00, 77.02s/it]
+wandb: Currently logged in as: julian-q. Use `wandb login --relogin` to force relogin
+wandb: Appending key for api.wandb.ai to your netrc file: /sailhome/quevedo/.netrc
+wandb: Tracking run with wandb version 0.16.4
+wandb: Run data is saved locally in /sailhome/quevedo/ArCHer/scripts/wandb/run-20240321_131217-1a3qnkd0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run archer-acc
+wandb: ⭐️ View project at https://wandb.ai/julian-q/llm_rl_gemm
+wandb: 🚀 View run at https://wandb.ai/julian-q/llm_rl_gemm/runs/1a3qnkd0
+done
+Using LoRA
+trainable params: 26,214,400 || all params: 13,042,242,560 || trainable%: 0.2009961084483925
+Creating new checkpoint directory
+>>>start iterations
+  0%|          | 0/2000 [00:00<?, ?it/s]  0%|          | 0/2000 [00:05<?, ?it/s]
+>>>Interacting with Environment
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/sailhome/quevedo/ArCHer/scripts/run.py", line 161, in main
+    offpolicy_train_loop(
+  File "/sailhome/quevedo/ArCHer/archer/algorithms/offpolicy_train_loop.py", line 82, in offpolicy_train_loop
+    trajectories = batch_interact_environment(agent = agent,\
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/quevedo/ArCHer/archer/environment/env_utils.py", line 63, in batch_interact_environment
+    action = agent.get_action(batch_obs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/sailhome/quevedo/ArCHer/archer/models/archer_agent.py", line 109, in get_action
+    self.accelerator.unwrap_model(self.model)
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/peft/peft_model.py", line 1148, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/generation/utils.py", line 1479, in generate
+    return self.greedy_search(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/generation/utils.py", line 2340, in greedy_search
+    outputs = self(
+              ^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 1183, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 1070, in forward
+    layer_outputs = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 798, in forward
+    hidden_states, self_attn_weights, present_key_value = self.self_attn(
+                                                          ^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/models/llama/modeling_llama.py", line 710, in forward
+    key_states, value_states = past_key_value.update(key_states, value_states, self.layer_idx, cache_kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/matx/u/quevedo/miniconda3/lib/python3.12/site-packages/transformers/cache_utils.py", line 128, in update
+    self.value_cache[layer_idx] = torch.cat([self.value_cache[layer_idx], value_states], dim=-2)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 134.00 MiB. GPU 0 has a total capacity of 44.53 GiB of which 42.44 MiB is free. Including non-PyTorch memory, this process has 44.48 GiB memory in use. Of the allocated memory 39.45 GiB is allocated by PyTorch, and 4.53 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: - 0.014 MB of 0.014 MB uploadedwandb: \ 0.014 MB of 0.014 MB uploadedwandb: | 0.014 MB of 0.014 MB uploadedwandb: / 0.021 MB of 0.021 MB uploaded (0.004 MB deduped)wandb: - 0.041 MB of 0.041 MB uploaded (0.004 MB deduped)wandb: 🚀 View run archer-acc at: https://wandb.ai/julian-q/llm_rl_gemm/runs/1a3qnkd0
+wandb: ️⚡ View job at https://wandb.ai/julian-q/llm_rl_gemm/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjE1MDgzMTc3Mw==/version_details/v1
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240321_131217-1a3qnkd0/logs

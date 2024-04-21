@@ -1,9 +1,9 @@
 #cache directory of transformer
-cache_dir: '/home/yifei/.cache'
+cache_dir: '/matx/u/quevedo/.cache/huggingface/hub'
 
 #token
-huggingface_token: ''
-wandb_key: ""
+huggingface_token: "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"
+wandb_key: "a08497d9a8fce92cd6911f93758d945e83def4d8"
 
 
 policy_lm: "gpt2"
